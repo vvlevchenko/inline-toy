@@ -1,7 +1,7 @@
 #include "SourceInfo.h"
 #include <stdio.h>
 // --------8<--------
-int __attribute__((always_inline)) sum(int a, int b) {
+static int __attribute__((always_inline)) sum(int a, int b) {
   return a + b;
 }
 
