@@ -1,0 +1,12 @@
+headers = SourceInfo.h /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/dlfcn.h
+compilerOpts.osx = -Iruntime/src/main/cpp
+
+---
+struct SourceInfo Kotlin_getSourceInfo0(long long addr) {
+  return Kotlin_getSourceInfo((void *)addr);
+}
+
+extern void foo_runner() asm("_kfun:foo_runner()ValueType");
+//extern void foo_runner() asm("_kfun:foo_runner()kotlin.Int"); // [1.3.4x]
+
+void *foo_runner_addr = foo_runner;
