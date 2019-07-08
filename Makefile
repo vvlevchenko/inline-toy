@@ -18,7 +18,7 @@ source_info.klib:SourceInfo.def
 	$(CINTEROP) -def $< -pkg source_info  -compiler-options "${KONAN_HEADER_INT}" -o $(notdir $(basename $@))
 
 inline.kexe:inline.kt source_info.klib
-	$(KONANC) -g $< -l source_info -Xtemporary-files-dir=${KONAN_TMP_DIR} -o $(notdir $(basename $@))
+	$(KONANC) -g $< -l source_info -Xtemporary-files-dir=${KONAN_TMP_DIR} ${KONAN_FLAGS} -o $(notdir $(basename $@))
 
 all:inline inline.kexe inline.bc
 
