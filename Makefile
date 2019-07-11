@@ -12,7 +12,7 @@ inline.bc: inline.c
 	${CC} ${CFLAGS} -emit-llvm -c -o $@ $<
 
 inline:SourceInfo.o inline.o
-	${CXX} -o $@ $^
+	${CXX} -g -o $@ $^
 
 source_info.klib:SourceInfo.def
 	$(CINTEROP) -def $< -pkg source_info  -compiler-options "${KONAN_HEADER_INT}" -o $(notdir $(basename $@))
