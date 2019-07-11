@@ -20,8 +20,11 @@ source_info.klib:SourceInfo.def
 inline.kexe:inline.kt source_info.klib
 	$(KONANC) -g $< -l source_info -Xtemporary-files-dir=${KONAN_TMP_DIR} ${KONAN_FLAGS} -o $(notdir $(basename $@))
 
-all:inline inline.kexe inline.bc
+inline.dSYM:inline
+	dsymutil $< -o $@
+
+all:inline inline.kexe inline.bc inline.dSYM 
 
 .PHONY: clean
 clean:
-	${RM} ${RMFLAGS} inline SourceInfo.o inline.o inline.bc source_info.klib inline.kexe inline.kexe.dSYM ${KONAN_TMP_DIR}
+	${RM} ${RMFLAGS} inline SourceInfo.o inline.o inline.bc source_info.klib inline.kexe inline.kexe.dSYM ${KONAN_TMP_DIR} inline.dSYM
